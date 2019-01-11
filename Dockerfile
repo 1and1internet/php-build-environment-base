@@ -1,8 +1,10 @@
 FROM ubuntu:18.04
 MAINTAINER developmentteamserenity@fasthosts.com
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    && apt-get install -y --no-install-recommends \
       curl \
       git \
       jq \
@@ -12,11 +14,11 @@ RUN apt-get update \
       tzdata \
       unzip \
       vim \
-    && DEBIAN_FRONTEND=noninteractive apt-get autoremove --purge -y \
+    && apt-get autoremove --purge -y \
     && add-apt-repository -y ppa:ondrej/php \
-    && DEBIAN_FRONTEND=noninteractive apt-get purge -y \
+    && apt-get purge -y \
       software-properties-common \
-    && DEBIAN_FRONTEND=noninteractive apt-get autoremove --purge -y \
+    && apt-get autoremove --purge -y \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app/
