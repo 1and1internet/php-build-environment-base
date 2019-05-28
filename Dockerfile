@@ -14,6 +14,7 @@ RUN apt-get update \
       tzdata \
       unzip \
       vim \
+      telnet \
     && apt-get autoremove --purge -y \
     && add-apt-repository -y ppa:ondrej/php \
     && apt-get purge -y \
